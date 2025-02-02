@@ -38,6 +38,7 @@
     "raspberry-pi-pico.ninjaPath": "${HOME}/.pico-sdk/ninja/v1.12.1/ninja",
     "files.associations": {
         "ws2812b.pio.h": "c",
-        "leds_matrix.h": "c"
+        "leds_matrix.h": "c",
+        "sprites.h": "c"
     }
 }
