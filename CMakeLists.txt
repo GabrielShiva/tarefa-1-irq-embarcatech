@@ -37,6 +37,9 @@ pico_sdk_init()
 
 add_executable(tarefa_1_irq_embarcatech tarefa_1_irq_embarcatech.c )
 
+# Then generate PIO header
+pico_generate_pio_header(tarefa_1_irq_embarcatech ${CMAKE_CURRENT_LIST_DIR}/ws2812b.pio)
+
 pico_set_program_name(tarefa_1_irq_embarcatech "tarefa_1_irq_embarcatech")
 pico_set_program_version(tarefa_1_irq_embarcatech "0.1")
 
@@ -44,19 +47,17 @@ pico_set_program_version(tarefa_1_irq_embarcatech "0.1")
 pico_enable_stdio_uart(tarefa_1_irq_embarcatech 1)
 pico_enable_stdio_usb(tarefa_1_irq_embarcatech 1)
 
-# Add the standard library to the build
-target_link_libraries(tarefa_1_irq_embarcatech
-        pico_stdlib)
-
 # Add the standard include files to the build
 target_include_directories(tarefa_1_irq_embarcatech PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(tarefa_1_irq_embarcatech 
-        
-        )
+target_link_libraries(tarefa_1_irq_embarcatech
+    pico_stdlib
+    hardware_pio
+    hardware_clocks
+)
 
 pico_add_extra_outputs(tarefa_1_irq_embarcatech)
 
